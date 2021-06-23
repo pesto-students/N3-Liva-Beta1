@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import Logo from "../logo/Logo";
 import SearchBar from "../searchbar/SearchBar";
 import style from "./Header.module.scss";
-import { ShoppingCart, Notifications, Avatar } from "@material-ui/icons/";
+import { ShoppingCart, Notifications, Person } from "@material-ui/icons/";
+import Button from "../button/Button";
 const Header = () => {
   return (
     <header className={style.header}>
@@ -16,16 +17,16 @@ const Header = () => {
           </div>
           <div>
             <div className="list-inline">
-              
-              <button className={`btn ${style.header__btn}`}>
+              <Button className={`btn ${style.header__btn}`}>
                 <Notifications />
-              </button>
-              <button className={`btn ${style.header__btn}`}>
+                
+              </Button>
+              <Button className={`btn ${style.header__btn}`}>
                 <ShoppingCart />
-              </button>
-              <button className={`btn ${style.header__btn}`}>
+              </Button>
+              <Button className={`btn ${style.header__btn}`}>
                 <Person />
-              </button>
+              </Button>
             </div>
           </div>
         </div>
