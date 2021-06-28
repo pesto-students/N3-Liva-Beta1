@@ -1,5 +1,5 @@
 import React from "react";
-import './App.global.scss';
+import "./App.global.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Logo from "./components/logo/Logo";
 import Routes from "./routes";
@@ -9,11 +9,14 @@ function App() {
   return (
     <>
       <Router>
-        <Header/>
+        <a className="skipnav" href="#main">
+          Skip to main content
+        </a>
+        <Header />
         <main id="main">
           <Routes />
         </main>
-        <Footer/>
+        <Footer />
       </Router>
     </>
   );
