@@ -2,13 +2,8 @@ import { Link } from "react-router-dom";
 import Logo from "../logo/Logo";
 import SearchBar from "../searchbar/SearchBar";
 import style from "./Header.module.scss";
-<<<<<<< HEAD
-import { ShoppingCart, Notifications, Person } from "@material-ui/icons/";
-import Button from "../button/Button";
-=======
 import {ShoppingCart,Notifications,Person} from '@material-ui/icons/';
 import Avatar from "../avatar/Avatar";
->>>>>>> 681e6a71e908defe2819233166487b3e0eadf956
 const Header = () => {
   return (
     <header className={style.header}>
