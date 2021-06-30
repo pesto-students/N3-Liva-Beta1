@@ -14,7 +14,7 @@ const WhyUs = () => {
           <div className={`col-4 ${style.whyus_item}}`}>
             <div className={style.whyus__item}>
               <div className={style.whyus__iconwrap}>
-                <HeadsetMicOutlined classes={style.whyus__icon} />
+                <HeadsetMicOutlined className={style.whyus__icon} />
               </div>
               <div className={style.whyus__descwrap}>
                 <h3 className={style.whyus__title} data-test="element-title">
@@ -29,7 +29,7 @@ const WhyUs = () => {
           <div className={`col-4 ${style.whyus_itemwrap}}`}>
             <div className={style.whyus__item}>
               <div className={style.whyus__iconwrap}>
-                <FlightTakeoffOutlined classes={style.whyus__icon} />
+                <FlightTakeoffOutlined className={style.whyus__icon} />
               </div>
               <div className={style.whyus__descwrap}>
                 <h3 className={style.whyus__title} data-test="element-title">
@@ -44,7 +44,7 @@ const WhyUs = () => {
           <div className={`col-4 ${style.whyus_item}}`}>
             <div className={style.whyus__item}>
               <div className={style.whyus__iconwrap}>
-                <HeadsetMicOutlined classes={style.whyus__icon} />
+                <HeadsetMicOutlined className={style.whyus__icon} />
               </div>
               <div className={style.whyus__descwrap}>
                 <h3 className={style.whyus__title} data-test="element-title">

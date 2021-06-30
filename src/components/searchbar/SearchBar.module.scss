@@ -1,4 +1,6 @@
 @import "../../scss/variables";
+@import "../../scss/functions";
+@import "../../scss/placeholder";
 
 .search {
   position: relative;
@@ -24,5 +26,21 @@
     margin-left: -1px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+
+  &__result{
+    position: absolute;
+    top:100%;
+    max-height: rem(300);
+    height: rem(300);
+    overflow:auto;
+    width: 100%;
+    background:$lightColor ;
+
+    &img{
+      width:rem(100);
+      height: auto;
+      margin: 0 rem(10) 0 0;
+    }
   }
 }

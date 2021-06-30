@@ -14,8 +14,10 @@ const useFetch = (url,options) => {
       try {
         const res = await axios(url, { signal: abortCtrl.signal,...options });
         const {data} = res.data;
-        setResponse((response) => [...response, ...data]);
-        setLoading(false);
+        if(data){
+          setResponse((response) => [...response, ...data]);
+          setLoading(false);
+        }
       } catch (e) {
         setError(e);
       }

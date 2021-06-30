@@ -1,9 +1,10 @@
+import defaultuser from "../../resources/defaultuser.png";
 import { Link } from "react-router-dom";
 import Logo from "../logo/Logo";
 import SearchBar from "../searchbar/SearchBar";
 import style from "./Header.module.scss";
 import {ShoppingCart,Notifications,Person} from '@material-ui/icons/';
-import Avatar from "../avatar/Avatar";
+import Avatar from '@material-ui/core/Avatar';
 const Header = () => {
   return (
     <header className={style.header}>
@@ -24,16 +25,8 @@ const Header = () => {
                 <Notifications/>
                 </button>
                 <button className={`btn ${style.header__btn}`}>
-                <Avatar/>
+                <Avatar src={defaultuser}/>
                 </button>
-              
-             
-              <li>
-               
-                </li>
-                <li>
-               
-                </li>
             </div>
           </div>
         </div>

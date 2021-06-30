@@ -2,13 +2,18 @@
 @import '../../scss/functions';
 @import '../../scss/placeholder';
 .header{
-    position: sticky;
+    position: fixed;
     top: 0;    
     background: $lightColor;
     z-index: 9;
     box-shadow: 0 2px 5px rgba(0,0,0,.20);
+    width: 100%;
     padding-block: rem(10);
     &__row{
         justify-content: space-between;
+    }
+    &__avatar{
+        height: rem(24);
+        width: rem(24);
     }
 }
