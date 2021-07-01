@@ -25,7 +25,7 @@ const Header = () => {
                 <Notifications/>
                 </button>
                 <button className={`btn ${style.header__btn}`}>
-                <Avatar src={defaultuser}/>
+                <Avatar data-test="header-avatar"/>
                 </button>
             </div>
           </div>
