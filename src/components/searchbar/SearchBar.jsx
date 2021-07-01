@@ -3,15 +3,25 @@ import style from "./SearchBar.module.scss";
 import { endpoints, headers } from "../../endpoints";
 import { Link } from "react-router-dom";
 
-
 const SearchBar = () => {
   const [term, setTerm] = useState("");
   const [debouncedTerm, setDebouncedTerm] = useState(term);
   const [searchResult, setSearchResult] = useState([]);
-  const [error,setError] = useState(false);
-  const [isLoading,setIsLoading] = useState(false);
-  const [haspopup,setHasPopup] = useState(false)
+  const [error, setError] = useState(false);
+  const [haspopup, setHasPopup] = useState(false);
+  const [isComponentVisible, setIsComponentVisible] = useState(true);
+  const node = useRef(null);
 
+  const handleHideDropdown = (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      setIsComponentVisible(false);
+    }
+  };
+  const handleClickOutside = (event) => {
+    if (node.current && !node.current.contains(event.target)) {
+      setIsComponentVisible(false);
+    }
+  };
   const handleChange = (event) => {
     setTerm(event.target.value);
     console.log(event.target.value);
@@ -21,21 +31,22 @@ const SearchBar = () => {
     event.preventDefault();
     searchData();
   };
-// function for Fetching data from the api
+  // function for Fetching data from the api
   const searchData = async () => {
-      try{
-        const response = await fetch(
-            `${endpoints.products}?query=${debouncedTerm}`,
-            { headers: headers }
-          );
-          const data = await response.json();
-          data.data ? setSearchResult(data.data): setError(true);
-          setHasPopup(true);
+      if(!debouncedTerm){
+        setError(false);
       }
-      catch(e){
-        setError(true)
-      }
-  
+    try {
+      const response = await fetch(
+        `${endpoints.products}?query=${debouncedTerm}`,
+        { headers: headers }
+      );
+      const data = await response.json();
+      data.data ? setSearchResult(data.data) : setError(true);
+      setHasPopup(true);
+    } catch (e) {
+      setError(true);
+    }
   };
 
   useEffect(() => {
@@ -50,9 +61,18 @@ const SearchBar = () => {
     }, 1000);
     return () => clearTimeout(timeoutId);
   }, [term]);
+  useEffect(() => {
+    document.addEventListener("keydown", handleHideDropdown, true);
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("keydown", handleHideDropdown, true);
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  });
 
   return (
-    <div className={style.search}>
+    <div className={style.search} ref={node}>
+      {isComponentVisible ? "aaaa" : "bbbb"}
       <form
         className={style.search}
         role="search"
@@ -77,21 +97,28 @@ const SearchBar = () => {
           Search
         </button>
       </form>
-      {setError && <div className={style.search__result} role="listbox"> NO data found</div>}
-      {searchResult?.length > 0  && debouncedTerm && 
+      {error && debouncedTerm && (
         <div className={style.search__result} role="listbox">
-            {searchResult?.map((searchItem)=> <Link className={style.search__resultitem}>
-            <img src={searchItem.media.source} className={style.search__resultimg}/>
-                <div className="">
-                    <div>{searchItem.name}</div>
-                    <div>
-                        {searchItem.price.formatted_with_symbol}
-                    </div>
-                </div>
-                
-                </Link>) }
-      </div> }
-     
+          {" "}
+          NO data found
+        </div>
+      )}
+      {!error && searchResult?.length > 0 && debouncedTerm && (
+        <div className={style.search__result} role="listbox">
+          {searchResult?.map((searchItem) => (
+            <Link className={style.search__resultitem} to={`products/${searchItem.id}`}>
+              <img
+                src={searchItem.media.source}
+                className={style.search__resultimg}
+              />
+              <div className="">
+                <div>{searchItem.name}</div>
+                <div>{searchItem.price.formatted_with_symbol}</div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
