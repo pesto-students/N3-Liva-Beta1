@@ -17,7 +17,7 @@ import PaymentShimmer from "../../components/loading/payment/PaymentShimmer";
 
 import style from "./Payment.module.scss";
 
-const Payment = () => {
+const Payment = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const cartId = localStorage.getItem("cart_id");
@@ -133,7 +133,7 @@ const Payment = () => {
   };
 
   useEffect(() => {
-    userEmail && getCartItems();
+    // userEmail && getCartItems();
   }, [userEmail]);
 
   if (isLoading) {
@@ -144,42 +144,42 @@ const Payment = () => {
     );
   }
 
-  if (location.search.includes("success")) {
-    return (
-      <main
-        data-test="component-payment"
-        className={`container block ${style.payment}`}
-      >
-        <div className={style.payment__confirmation}>
-          <CheckCircle
-            data-test="success-icon"
-            className={style.payment__successIcon}
-          />
-          <h1 data-test="success-text">
-            Thank You, your order has been confirmed!
-          </h1>
-        </div>
-        <p data-test="success-message">
-          Thank you for shopping with us. We'll send a confirmation of item has
-          shipped, if you would like to check the status of the order(s) please
-          press the link below.
-        </p>
-        <button
-          data-test="order-button"
-          name="Go to my orders"
-          className="btn btn-primary"
-          onClick={() => history.push("./orders")}
-        >
-          GO TO MY ORDERS
-        </button>
-        <div className="block">
-          <LatestProducts />
-        </div>
-      </main>
-    );
-  }
+  // if (location.search.includes("success")) {
+  //   return (
+  //     <main
+  //       data-test="component-payment"
+  //       className={`container block ${style.payment}`}
+  //     >
+  //       <div className={style.payment__confirmation}>
+  //         <CheckCircle
+  //           data-test="success-icon"
+  //           className={style.payment__successIcon}
+  //         />
+  //         <h1 data-test="success-text">
+  //           Thank You, your order has been confirmed!
+  //         </h1>
+  //       </div>
+  //       <p data-test="success-message">
+  //         Thank you for shopping with us. We'll send a confirmation of item has
+  //         shipped, if you would like to check the status of the order(s) please
+  //         press the link below.
+  //       </p>
+  //       <button
+  //         data-test="order-button"
+  //         name="Go to my orders"
+  //         className="btn btn-primary"
+  //         onClick={() => history.push("./orders")}
+  //       >
+  //         GO TO MY ORDERS
+  //       </button>
+  //       <div className="block">
+  //         <LatestProducts />
+  //       </div>
+  //     </main>
+  //   );
+  // }
 
-  if (location.search.includes("canceled")) {
+  if (location.search.includes("")) {
     return (
       <main className={`container block ${style.payment}`}>
         <div className={style.payment__confirmation}>

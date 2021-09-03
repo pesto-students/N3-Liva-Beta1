@@ -30,7 +30,7 @@ const ProductsRow = ({ category, name }) => {
     >
       <div className={style.productsRow__title}>
         <h4 data-test="category-name">{name}</h4>
-        <a href="/products">
+        <a href={`/products/${category}`}>
           View More{" "}
           <span>
             <ArrowForwardRoundedIcon className={style.productsRow__icon} />

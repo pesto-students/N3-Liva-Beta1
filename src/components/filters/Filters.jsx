@@ -12,9 +12,9 @@ const Filters = ({ name, image, id, parentCallback }) => {
    */
   const handleCallback = () => {
     parentCallback(id);
-    document
-      .getElementBy("filters")
-      .classList.replace(`${style.filters__current}`);
+    // document
+    //   .getElementBy("filters")
+    //   .classList.replace(`${style.filters__current}`);
   };
 
   return (

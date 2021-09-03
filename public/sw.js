@@ -17,7 +17,7 @@
 
 // self.addEventListener("activate", (evt) => {
 //   evt.waitUntil(
-//     caches.Keys().then((keys) => {
+//     caches.keys().then((keys) => {
 //       return Promise.all(
 //         keys
 //           .filter((key) => key !== staticCacheName && key !== dynamicCacheName)

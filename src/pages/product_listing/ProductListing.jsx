@@ -9,8 +9,10 @@ import ProductCardShimmer from "../../components/loading/product_card/ProductCar
 
 import style from "./ProductListing.module.scss";
 
-const ProductListing = () => {
-  const [categoryId, setCategoryId] = useState("cat_gvRjwOQmG54mNL");
+const ProductListing = (props) => {
+  const [categoryId, setCategoryId] = useState(props.match.params.id);
+
+  console.log(props);
 
   const {
     response: categories,
